@@ -1,0 +1,84 @@
+.btn {
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: inline-block;
+  text-transform: uppercase;
+  color: $color-white;
+  transition: all .3s;
+  min-width: 22rem;
+  position: relative;
+  z-index: 1;
+
+  @include respond(phone){
+    min-width: unset;
+    font-size: 1.3rem;
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+    //background-color: $color-primary;
+  }
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+    &::after {
+      visibility: visible;
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+
+  &__main {
+    padding: 1.5rem 3rem;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    @include respond(phone){
+      padding: 1.3rem 1.5rem;
+    }
+
+    &--small {
+      padding: 1.2rem 3rem;
+      width: auto;
+      min-width: unset;
+      font-size: 1.2rem;
+      font-weight: 400;
+      @include respond(phone){
+        padding: 1.3rem 1.5rem;
+      }
+    }
+
+
+  }
+
+
+
+
+  &__red {
+  background-color: $color-primary;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+  &__transparent {
+  background-color: transparent;
+  border: 1px solid $color-white;
+
+    &::after {
+      visibility: hidden;
+      background-color: rgba(255,255,255,.1);
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.logo {
+  //background: #fff;
+  border: 4px solid white;
+  display: inline-block;
+  width: 14rem;
+  font-size: 3.5rem;
+  color: white;
+  font-family: "Open Sans",sans-serif;
+  line-height: 1;
+  z-index: 9;
+  @include respond(tab-port){
+    position: absolute;
+    top: 12px;
+    left: 2rem;
+  }
+  & span {
+    text-align: center;
+    padding: .6rem;
+    display: inline-block;
+  }
+  &__prim_el{
+    background-color: white;
+    color: rgba(0,0,0,.8);
+    font-weight: 700;
+    width: 35%;
+  }
+  &__second_el {
+    color: white;
+    background-color: transparent;
+    width: 65%;
+    font-weight: 300;
+  }
+
+  // hover on logo
+
+  &:hover{
+    cursor: pointer;
+  }
+
+}

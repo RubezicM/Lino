@@ -1,0 +1,13 @@
+**********************************************************************************************
+
+1 rem is equal to 10px > It is set as 62.5% as a font-size in a root html.
+
+7-1 SCSS ARCHITECTURE is implemented as well as html resets.
+
+Grid scss file and variables for grid are included.
+
+Gulp packages are added as dependencies as well as configured gulp file for building process.
+
+**********************************************************************************************
+
+In command prompt, run  "NPM Install" , then type "gulp" and that will open the website in new browser.

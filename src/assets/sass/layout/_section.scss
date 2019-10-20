@@ -1,0 +1,60 @@
+section {
+  padding: 10rem 0;
+  @include respond(tab-port){
+    padding: 4.5rem 0;
+  }
+}
+
+#about-us-section {
+  padding: 15rem 0;
+  @include respond(tab-port){
+    padding: 9rem 0;
+
+    & .row {
+      max-width: unset;
+    }
+  }
+}
+
+.our-team {
+  background-image: linear-gradient(215deg, rgba(0, 0, 0, 0.6) 0%, rgba(65, 65, 65, 0.5) 74%),
+  url("../images/teambg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  width: 100%;
+  height: 800px;
+  position: relative;
+  @include respond(444px){
+    display: none;
+  }
+  @include respond(tab-port){
+    height: 550px;
+
+    .row {
+      max-width: fit-content;
+    }
+  }
+  .headline-secondary {
+    color: $color-white;
+    &__sub {
+      color: $color-white;
+    }
+  }
+
+  &::before{
+    @include respond(1800px){
+      content: unset;
+    }
+    content: '';
+    background-image: url("../images/shape.png");
+    background-position: bottom center;
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 81%;
+  }
+}

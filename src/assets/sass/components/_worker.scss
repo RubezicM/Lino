@@ -1,0 +1,126 @@
+.worker {
+
+  position: absolute;
+
+  &__wrapper {
+    @include respond(1800px){
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-content: space-between;
+      margin-top: 20rem;
+    }
+    @include respond(tab-port){
+      margin-top: 12rem;
+    }
+  }
+
+  @include respond(1800px){
+    position: relative;
+    left: unset!important;
+    //top: 120px!important;
+    top: unset!important;
+    //float: left;
+
+    &:not(:last-child){
+      margin-right: 1.5rem;
+    }
+  }
+  //@include respond(tab-port){
+  //  position: relative;
+  //  left: unset!important;
+  //  top: 120px!important;
+  //  float: left;
+  //
+  //  &:not(:last-child){
+  //    margin-right: 1.5rem;
+  //  }
+  //}
+
+  &:hover .worker__img--overlay{
+    cursor: pointer;
+    transform: scale(1.45);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.36);
+
+  }
+
+  &:hover .worker__desc {
+    transform: translateY(125%);
+    visibility: visible;
+  }
+  &__img {
+    position: relative;
+
+    &--overlay {
+      width: 10rem;
+      height: 10rem;
+      background-color: $color-primary;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 4px solid $color-primary;
+      transition: all .3s;
+      margin: 0 auto;
+      @include respond(1800px){
+        width: 14rem;
+        height: 14rem;
+      }
+      @include respond(tab-port){
+        width: 7rem;
+        height: 7rem;
+      }
+
+      img {
+        width: 100%;
+
+        &:hover {
+          //transform: scale(1.85);
+        }
+      }
+    }
+  }
+
+  &__desc {
+    text-align: center;
+    transition: transform .3s;
+    visibility: hidden;
+    transform: translateY(-25%);
+  }
+
+  &__name {
+    font: 600 2.4rem "Open Sans",sans-serif;
+    color: $color-primary;
+  }
+
+  &__jobdesc {
+    font: 600 1.5rem "Source Sans Pro",sans-serif;
+    color: $color-white;
+  }
+
+
+  // positions
+
+  &__pos1 {
+  top: 475px;
+  }
+
+  &__pos2 {
+    left: 620px;
+    top: 430px;
+  }
+
+  &__pos3 {
+    left: 880px;
+    top: 430px;
+  }
+  &__pos4 {
+    left: 1150px;
+    top: 470px;
+  }
+
+  &__pos5 {
+    left: 1400px;
+    top: 430px;
+  }
+}

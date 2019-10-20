@@ -1,0 +1,25 @@
+.partner-logo {
+    background-color: #fff;
+  //width: 18%;
+  height: 100px;
+  padding: 3.2rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all .3s;
+  &:hover {
+    background-color: $color-primary;
+  }
+
+  &:hover img {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7500%) hue-rotate(274deg) brightness(105%) contrast(102%)
+  }
+  img {
+    //background-color: orangered;
+    color: white;
+    width: 100%;
+    height: 100%;
+    filter: invert(.5);
+    transition: all .3s;
+
+  }
+}

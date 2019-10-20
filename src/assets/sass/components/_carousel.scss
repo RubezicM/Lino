@@ -1,0 +1,88 @@
+.carousel {
+  background-color: $color-white;
+  position: absolute;
+  left: 0;
+  top: 9rem;
+  width: 66.5rem;
+  padding: 10rem 0;
+  z-index: 1;
+  @include respond(tab-port){
+    width:100%;
+    position: relative;
+    top: unset;
+    margin: 0 auto;
+  }
+
+  @include respond(phone-sm){
+    width: 100%;
+  }
+  &__slide {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 2rem;
+    & > * {
+      margin-bottom: 2rem;
+    }
+    p {
+      margin-bottom: 4rem;
+    }
+
+
+    @include respond(tab-port){
+      margin-bottom: 3.5rem;
+    }
+  }
+
+  .symbol {
+    margin: 0 auto 4rem auto;
+  }
+
+  &__title {
+    font: 600 1.8rem "Open Sans",sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #6a6a6a;
+    position: relative;
+    margin-bottom: 5rem;
+    &::after {
+      content: '';
+      width: 5rem;
+      height: 1px;
+      position: absolute;
+      left: 50%;
+      background-color: #6a6a6a;
+      bottom: -30px;
+      transform: translateX(-50%);
+    }
+  }
+  &__paragraph {
+    font: 300 1.4rem "Source Sans Pro",sans-serif;
+    color: #999999;
+    line-height: 1.6;
+    letter-spacing: 1px;
+  }
+  button {
+
+  }
+}
+
+// GLIDE CUSTOM CSS
+
+.glide {
+
+
+
+  &__track {
+
+  }
+  &__bullets {
+    bottom: 6rem;
+  }
+  &__bullet {
+    background-color: darken(#f4f5f9,15%);
+    &--active {
+      background-color: $color-primary;
+    }
+  }
+}

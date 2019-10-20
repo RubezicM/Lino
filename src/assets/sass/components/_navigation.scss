@@ -1,0 +1,162 @@
+.nav {
+
+  @include respond(tab-port){
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient($color-primary, $color-primary-dark);
+  }
+
+
+  &.open {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & ul {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & li {
+      display: block;
+      margin: 0 0 10px 0!important;
+      text-align: center;
+      width: 30rem;
+      border: none;
+      cursor: pointer;
+      transition: all .3s ease-in-out;
+    }
+
+    & li:hover {
+      border: none;
+      background-color: lightyellow;
+    }
+
+    & li:hover a {
+      color: #222222;
+    }
+  }
+
+  & li {
+    display: inline-block;
+    padding: 1.95rem 0;
+    margin:0 $nav-gutter-horizontal;
+    font-size: 0;
+    border-bottom: 2px solid transparent;
+
+  }
+  & li:last-child{
+    margin: 0 0 0 $nav-gutter-horizontal;
+  }
+  & li:first-child{
+    margin: 0 $nav-gutter-horizontal 0 0;
+  }
+
+
+  & li:hover a {
+    color: $color-primary;
+  }
+  & li:hover {
+    border-bottom: 2px solid $color-primary;
+  }
+  & a {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    font-family: "Open Sans",sans-serif;
+    color: white;
+    font-weight: 600;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -o-transition: all .2s;
+    transition: all .2s;
+  }
+
+
+  ////////////// BUTTON
+
+  &__button {
+    padding: 1rem;
+    //display: flex;
+    align-items: center;
+    border-radius: 3px;
+    border: 1px solid white;
+    min-height: 40px;
+    //position: relative;
+    top: 12px;
+    cursor: pointer;
+    position: fixed;
+    right: 3rem;
+    display: none;
+
+    @include respond(tab-port){
+      display: flex;
+      top: 12px;
+    }
+    .gamburger  {
+      position: relative;
+      //@include respond(tab-port){
+      //  margin-top: 2.7rem;
+      //}
+      &,
+      &::before,
+      &::after {
+        width: 3rem;
+        height: 2px;
+        background-color: $color-white;
+        display: inline-block;
+        @include respond(tab-port){
+          width: 2.5rem;
+        }
+      }
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        transition: all .2s;
+
+      }
+      &::before {
+        top: -.8rem;
+      }
+      &::after {
+        top: .8rem;
+      }
+
+
+
+    }
+
+
+    &.active .gamburger {
+      background-color: transparent;
+    }
+    &.active .gamburger::before {
+      top: 0;
+      transform: rotate(135deg);
+    }
+    &.active .gamburger::after {
+      top: 0;
+      transform: rotate(-135deg);
+    }
+
+
+    &:not(.active):hover  .gamburger::before {
+      top: -1rem;
+    }
+    &:not(.active):hover .gamburger::after {
+      top: 1rem;
+    }
+
+  }
+
+}
+
+
+
+

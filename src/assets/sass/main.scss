@@ -1,0 +1,39 @@
+@import "../../../node_modules/@glidejs/glide/dist/css/glide.core.min.css";
+@import "../../../node_modules/@glidejs/glide/dist/css/glide.theme.min.css";
+@import '../../../node_modules/normalize.css/normalize.css';
+
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "base/animations";
+@import "base/base";
+@import "base/normalize";
+@import "base/typography";
+@import "base/utilities";
+
+
+@import "components/btn";
+@import "components/card";
+@import "components/logo";
+@import "components/navigation";
+@import "components/contact-form";
+@import "components/slider";
+@import "components/stats-counter";
+@import "components/divider";
+@import "components/feature-card";
+@import "components/portfolioMix";
+@import "components/partner-logo";
+@import "components/blog";
+@import "components/worker";
+@import "components/carousel";
+@import "components/symbol";
+@import "components/popin";
+@import "components/tothetop";
+// Layouts
+
+@import "pages/home";
+
+@import "layout/grid";
+@import "layout/header";
+@import "layout/section";

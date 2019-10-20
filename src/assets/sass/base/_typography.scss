@@ -1,0 +1,67 @@
+body {
+  font-family: 'Open Sans',sans-serif;
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+
+.headline-main {
+  color: $color-white;
+  text-align: center;
+  width: 80rem;
+  @include respond(820px){
+      width: 100%;
+  }
+  &__secondary {
+    font: 2.2rem 'Source Sans Pro',sans-serif;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+
+    @include respond(820px){
+      font-size: 1.5rem;
+    }
+  }
+  &__primary {
+    display: block;
+    font: bold 6.5rem 'Open Sans',sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 3.2px;
+    margin: 2rem 0;
+    @include respond(820px){
+      font-size: 2.7rem;
+      margin: 1.6rem 0;
+    }
+  }
+  &__paragraph {
+    font: 300 1.5rem 'Open Sans', sans-serif;
+    text-align: center;
+    width: 70%;
+    display: inline-block;
+    margin: 0 0 2.5rem 0;
+    line-height: 1.5;
+    @include respond(820px){
+      font-size: 1.3rem;
+      margin: 0 0 1.75rem 0;
+    }
+  }
+}
+
+.headline-secondary {
+  font: 700 3.6rem 'Source Sans Pro',sans-serif;
+  margin: 0 auto;
+  text-align: center;
+  color: #6a6a6a;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  @include respond(tab-port){
+    font-size: 2.7rem;
+  }
+  &__sub {
+    display: block;
+    margin: 2rem auto;
+    text-transform: none;
+    font: 600 1.4rem 'Open Sans',sans-serif;
+    letter-spacing: 0;
+    color: #999999;
+  }
+
+}

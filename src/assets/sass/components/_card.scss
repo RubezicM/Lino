@@ -1,0 +1,122 @@
+.card {
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  @include respond(tab-port){
+    width: 100%;
+    margin: 0 auto;
+  }
+  &:hover .card__top,&:hover button {
+    background-color: $color-primary;
+  }
+
+  &:hover .card__price--amount {
+    color: $color-primary;
+
+    span {
+      color: #999 !important;
+    }
+  }
+  &__top {
+    transition: all .3s;
+    height: 20rem;
+    position: relative;
+    background-color: #999;
+    z-index: -1;
+    @include respond(tab-port){
+      height: 15rem;
+      z-index: unset;
+      padding-top: .7rem;
+    }
+  }
+  &__title {
+    display: inline-block;
+    font: 600 2.4rem "Open Sans",sans-serif;
+    text-transform: uppercase;
+    color: $color-white;
+    position: relative;
+    letter-spacing: 1px;
+    top: 4rem;
+    @include respond(tab-port){
+      top: unset;
+      font-size: 2.1rem;
+    }
+  }
+
+  &__body {
+    padding: 14rem 3rem 12rem 3rem;
+    position: relative;
+    margin-top: -15rem;
+    background-color: #f4f5f9;
+    z-index: -1;
+    @include respond(tab-port){
+      padding-top: 10rem;
+    }
+  }
+
+  &__price {
+    @extend .symbol__round;
+    width: 15rem !important;
+    height: 15rem !important;
+    background-color: $color-white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -7.5rem;
+    color: #999;
+    margin: 0 auto;
+    @include respond(tab-port){
+      width: 8.5rem!important;
+      height: 8.5rem!important;
+      top: -11rem;
+    }
+    //transform: translateY(-50%);
+    &::after {
+      @extend .symbol__round--outline;
+
+    width: 15rem !important;
+      height: 15rem !important;
+      background-color: rgba(176,176,176,.5)!important;
+      transform: translateX(0) scale(1.2)!important;
+      @include respond(tab-port){
+        width: 8.5rem!important;
+        height: 8.5rem!important;
+      }
+    }
+    &--amount {
+      font: 700 4rem "Source Sans Pro",sans-serif;
+      @include respond(tab-port){
+        font-size: 3rem;
+      }
+      span {
+        display: block;
+        font-size: .35em;
+        font-weight: 400;
+      }
+    }
+  }
+
+  &__list {
+
+    &--item {
+      font: 600 1.4rem "Open Sans",sans-serif;
+      color: #999999;
+        &:not(:last-child){
+          margin-bottom:2rem;
+
+        }
+    }
+  }
+  button {
+    position: absolute;
+    background-color: #999;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &:hover {
+      background-color: $color-primary;
+      transform: translate(-50%,-3px);
+    }
+  }
+}

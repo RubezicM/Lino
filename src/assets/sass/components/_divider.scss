@@ -1,0 +1,24 @@
+.divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__fig_left,&__fig_right{
+    height: 1px;
+    width: 8rem;
+    background-color: $color-white;
+  }
+  &__fig_middle{
+    width: .7rem;
+    height: .7rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-color: $color-primary;
+    margin: 0 1.5rem;
+  }
+  &--gray {
+    .divider__fig_left,.divider__fig_right{
+      background-color: #999999;
+    }
+  }
+}

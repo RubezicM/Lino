@@ -1,0 +1,228 @@
+// About us section
+
+  .about-us {
+
+    &__title {
+      font-size: 3.6rem;
+      color: $text-black;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-family: "Source Sans Pro",sans-serif;
+      padding-left: 4rem;
+      border-left: 8px solid $color-primary;
+      line-height: 1;
+      margin-bottom: 5rem;
+      @include respond(tab-port){
+        margin-bottom: 3rem;
+      }
+    }
+
+    &__text {
+    font: 14px "Source Sans Pro",sans-serif;
+      color: #999;
+      line-height: 1.6;
+
+      span {
+        display: block;
+        margin: 2rem 0 6rem 0;
+        @include respond(tab-port){
+          margin-bottom: 3rem;
+        }
+      }
+    }
+
+    &__img {
+      width: 100%;
+    @include respond(tab-port){
+      width: 60%;
+      display: block;
+      margin: 0 auto;
+    }
+
+    }
+  }
+
+// Services section
+
+  .services {
+    padding: 0;
+
+    .row {
+      max-width: 58rem;
+    }
+  }
+
+  .portfolio {
+    padding-bottom: 0;
+  }
+
+  .case-study {
+    background-color: $bg-secondary;
+
+    &__showcase {
+      padding-top: 4rem;
+      overflow: hidden;
+      @include clearfix;
+      position: relative;
+
+    }
+    @include respond(tab-port){
+      & .row {
+        max-width: fit-content;
+      }
+    }
+    @include respond(phone-sm){
+      & .row {
+        padding: 0 1rem;
+      }
+    }
+    &__img {
+      width: 50%;
+      float: right;
+      @include respond(tab-port){
+        display: none;
+      }
+    }
+  }
+
+  .statistics {
+    position: relative;
+    height: 42rem;
+    overflow: hidden;
+    @include respond(tab-port){
+      display: none;
+    }
+    &__holder {
+      @include clearfix;
+      .stats-counter {
+        float: left;
+        width: 20%;
+       text-align: center;
+      }
+    }
+  }
+
+
+
+  .parallax {
+    min-height: 42rem;
+    background-image: url("../images/street.png");
+    background-size: cover;
+    background-repeat: no-repeat !important;
+    filter: brightness(60%);
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    position: absolute;
+    background-position: top center;
+  }
+
+  .pricing {
+    .divider {
+      margin-bottom: 6rem;
+    }
+  }
+
+  .collab {
+    background-color: $bg-secondary;
+      @include respond(tab-port){
+        .row {
+          max-width: fit-content;
+        }
+      }
+    .partners-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 5rem;
+      & > div {
+        flex: 1 0 25%;
+
+        @include respond(tab-port){
+          flex: 1 0 30%;
+        }
+        margin: 10px;
+      }
+    }
+  }
+
+  .blog-home {
+    background-color: $bg-secondary;
+    overflow: hidden;
+    padding: 2rem 0;
+  }
+
+  .contact {
+    background-color: $bg-secondary;
+
+    @include respond(tab-port){
+      & .row {
+        max-width: unset;
+        width: 100%;
+      }
+    }
+  }
+
+  .cta__bottom {
+    background-image: url("../images/footer.png");
+   // background-image: linear-gradient(215deg, rgba(0, 0, 0, 0.6) 0%, rgba(65, 65, 65, 0.5) 74%), url("../../img/footer.png");;
+    background-color: rgba(0,0,0,.65); // Tint color
+    background-blend-mode: multiply;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    min-height: 45rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include respond(phone){
+      min-height: 30rem;
+    }
+    .cta__wrapper {
+        text-align: center;
+      padding: 0 3rem;
+      h3 {
+        color: $color-white;
+        font: 400 2.9rem "Open Sans",sans-serif;
+        text-transform: capitalize;
+        margin-bottom: 2rem;
+        span {
+          font-weight: 700;
+        }
+      }
+      p {
+        font: 400 1.6rem "Open Sans",sans-serif;
+        color: $color-white;
+        margin-bottom: 5rem;
+      }
+    }
+  }
+
+  footer {
+    background-color: #202020;
+    color: #999;
+    padding: 2.56rem 0;
+
+    .footer__social--item {
+      font-size: 1.9rem;
+      transition: color .2s ease;
+      &:hover {
+        cursor: pointer;
+        color: $color-primary;
+      }
+      &:not(:last-child){
+        margin-right: 1.65rem;
+      }
+    }
+
+    .footer__info {
+      font-size: 1.3rem;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      &::after {
+        content: none !important;
+      }
+    }
+  }

@@ -1,0 +1,70 @@
+.header {
+  background-color: #000000;
+  background-image: linear-gradient(215deg, rgba(#000000,.6) 0%, rgba(#414141,.5) 74%),
+  url("../images/balloons.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  height: 110vh;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+  position: relative;
+
+  @include respond(tab-port){
+    clip-path: none;
+    height: 100vh;
+  }
+
+  // navigation
+  &__nav {
+    //@include clearfix;
+    padding: 3rem 2.5rem;
+    transition: all .6s;
+    z-index: 9999;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+
+  }
+
+
+
+  // middle
+  &__middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+  // decoration
+    .divider {
+      margin: 3.4rem 0;
+      @include respond(700px){
+        margin: 1.75rem 0;
+      }
+    }
+
+
+    // Buttons
+    .cta-holder {
+      margin-top: 4rem;
+    }
+    .cta-holder .btn:not(:last-child) {
+          margin-right: 3rem;
+    }
+
+
+  }
+  // Symbol
+
+  &__symbol {
+    position: absolute;
+    left: 50%;
+    bottom: -5.5rem;
+    transform: translate(-50%,-50%);
+
+  }
+}

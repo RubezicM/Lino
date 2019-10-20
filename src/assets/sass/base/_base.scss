@@ -1,0 +1,40 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    // this defines what 1rem is
+    font-size: 62.5%;  // 1 rem = 10px;
+}
+
+ol, ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+// Button reset
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit; /* 1 */
+    font-size: 100%; /* 1 */
+    line-height: 1.15; /* 1 */
+    margin: 0; /* 2 */
+}
+
+.section-divider{
+    border-color: transparent;
+    box-shadow: 1px 1rem 0 rgba(0,0,0,.1);
+}

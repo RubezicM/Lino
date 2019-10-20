@@ -1,0 +1,119 @@
+.contact-form {
+
+
+  // container
+  &__wrapper {
+    display: flex;
+    margin-top: 6rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+    @include respond(tab-port){
+      flex-direction: column;
+    }
+    & > div {
+      padding: 8rem 9.5rem;
+      background-color: $color-white;
+      @include respond(tab-port){
+        padding: 6rem;
+      }
+    }
+  }
+
+
+  // left
+  &__info {
+    width: 40%;
+    //border-right: 4px solid $color-primary;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    @include respond(tab-port){
+      width: 100%;
+      flex-direction: row;
+    }
+    &::after {
+      content: "";
+      height: 45%;
+      width: 1.5px;
+      background-color: $color-primary;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      @include respond(tab-port){
+        height: 1.5px;
+        width: 45%;
+        bottom: 0;
+        top: unset;
+        right: 50%;
+        transform: translateX(50%);
+      }
+    }
+    & > div:not(:last-child) {
+      margin-bottom: 3.5rem;
+    }
+    h5 {
+      color: $color-primary;
+      font: 600 2.2rem "Source Sans Pro",sans-serif;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      @include respond(tab-port){
+        font-size: 1.9rem;
+      }
+    }
+    p{
+      color: #999999;
+      font: 400 1.6rem "Open Sans",sans-serif;
+      @include respond(tab-port){
+        font-size: 1.4rem;
+      }
+    }
+    span{
+      display: block;
+    }
+  }
+
+  // right
+  &__form {
+    width: 60%;
+    @include respond(tab-port){
+      width: 100%;
+    }
+    .form-group {
+      position: relative;
+
+      &:last-child{
+        margin-top: 1.5rem;
+      }
+    }
+
+    .form-control {
+      border: 0;
+      border-bottom: 1px solid #e5e5e5;
+      position: relative;
+      display: block;
+      padding: 1rem 0;
+      color: #999;
+      font: 500 1.5rem "Open Sans",sans-serif;
+      width: 100%;
+      transition: all .2s ease-in;
+      &:focus {
+        outline: none;
+        border-bottom: 1px solid $color-primary;
+      }
+
+    }
+
+    label {
+      //opacity: 0;
+      visibility: hidden;
+
+    }
+
+    form {
+
+    }
+  }
+
+}

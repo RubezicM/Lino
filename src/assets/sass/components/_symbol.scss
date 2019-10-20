@@ -1,0 +1,77 @@
+.symbol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+
+  /////////// SHAPES ////////////
+  &__round {
+    border-radius: 50%;
+    width: 6rem;
+    height:6rem;
+    position: relative;
+
+    &--outline::after {
+        border-radius: 50%;
+        content: '';
+        background-color: rgba($color-white,.3);
+        width: 100%;
+        height: 100%;
+        transform: scale(1.2);
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: -1;
+    }
+    i{
+      display: inline-block;
+      font-size: 2rem;
+    }
+
+  }
+
+  &__diamond {
+    width: 8rem;
+    height:8rem;
+    border-radius: 1px;
+    transform: rotate(-45deg);
+    i {
+      color: $color-white;
+      font-size: 3rem;
+      transform: rotate(45deg);
+    }
+  }
+
+
+  ////////// COLORS //////////
+
+  &__red {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+
+  &__white {
+    background-color: darken($color-white,5%);
+
+    &--txtprimary {
+      i {
+        color: $color-primary;
+      }
+    }
+
+  }
+
+  &__transparent {
+    background-color: transparent;
+    border: 1px solid $color-white;
+  }
+
+
+
+
+}
+
+.wrapper {
+  position: relative;
+}
