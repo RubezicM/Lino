@@ -1,66 +1,6 @@
-import mixitup from "mixitup/dist/mixitup";
-import Glide from "@glidejs/glide/dist/glide.min.js";
+import {getDocHeight} from "./utils/helpers";
+import {isElementInViewport} from "./utils/helpers";
 
-const mixerContainer = document.querySelector('.portfolioMix');
-
-let mixer = mixitup(mixerContainer, {
-    selectors: {
-        target: '.mix'
-    },
-    animation: {
-        duration: 300
-    }
-});
-
-
-let glide = new Glide('.glide', {
-    type: 'carousel',
-    perView: 1,
-    focusAt: 'center',
-    autoplay: "2500"
-});
-glide.mount();
-
-
-let mq = window.matchMedia( "(max-width: 992px)" );
-let sr = new ScrollReveal();
-
-console.log(mq);
-
-let slideUp = {
-    distance: '120%',
-    origin: 'bottom',
-    opacity: .1,
-    duration: 700,
-    interval: 50,
-    delay:200
-};
-let slideLeft = {
-    distance: '120%',
-    origin: 'left',
-    duration: 750,
-    delay: 100,
-    mobile: false
-};
-let slideTop = {
-    distance: '120%',
-    origin: 'top',
-    duration: 850,
-    delay: 300
-};
-let slideRight = {
-    distance: '120%',
-    origin: 'right',
-    duration: 250,
-    opacity: 0
-};
-if(!mq.matches){
-    sr.reveal('.stats-counter',slideUp);
-    sr.reveal('.about-us__img',slideLeft);
-    sr.reveal('.about-us',slideTop);
-    sr.reveal('.carousel',slideLeft);
-    sr.reveal('.case-study__img',slideRight);
-}
 
 
 
@@ -69,55 +9,43 @@ const arrowTop = document.getElementById('arrowTop');
 const sliderPanel = document.querySelectorAll('.slider__trigger');
 const parallax = document.querySelector('.parallax');
 const statistics = document.querySelector('.statistics');
-const statsDIVs = document.querySelectorAll('.stats-counter__num');
+
 let xScrollPosition;
 let yScrollPosition;
-let lastScrollPos = 0;
-let distance = 0;
 let counted = false;
-let parallaxPos = document.querySelector('.statistics');
 
-let data = parallaxPos.getBoundingClientRect();
 const menuItems = document.querySelectorAll('.nav__item');
 const menuBtn = document.querySelector('.nav__button');
-// const breakpoints = {
-//     sm: 3,
-//     md:
-// };
+const sliderBtns = document.querySelectorAll('.slider__trigger');
+const sliderImgs = document.querySelectorAll('.slider__img');
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    addDataAttributes('data-name',sliderImgs);
+
+}, false);
 
 /// closing mobile menu
 
 menuItems.forEach((item)=>{
    item.addEventListener('click',(e)=>{
-      console.log(e.currentTarget.parentElement.parentElement);
+      console.log(e.currentTarget.parentElement.parentElement.parentElement);
        e.currentTarget.children[0].click();
        e.currentTarget.parentElement.parentElement.classList.remove('open');
+       e.currentTarget.parentElement.parentElement.parentElement.children[1].classList.remove('open');
        menuBtn.classList.remove('active');
    });
 });
 
-function getDocHeight() {
-    let D = document;
-    return Math.max(
-        D.body.scrollHeight, D.documentElement.scrollHeight,
-        D.body.offsetHeight, D.documentElement.offsetHeight,
-        D.body.clientHeight, D.documentElement.clientHeight
-    )
-}
-
-let docheight = getDocHeight();
-
 
 window.onscroll = function () {
-
 
   shrinkNav();
   showArrow();
 
-
   /////// start counting up in service section
+
+    const statsDIVs = document.querySelectorAll('.stats-counter__num');
 
     if(isElementInViewport(statistics) && counted === false){
         statsDIVs.forEach(e=>{
@@ -129,34 +57,9 @@ window.onscroll = function () {
         });
     }
 
-
-
 };
 
-function isElementInViewport(el) {
-    let rect = el.getBoundingClientRect();
 
-    return rect.bottom > 0 &&
-        rect.right > 0 &&
-        rect.left < (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */ &&
-        rect.top < (window.innerHeight || document.documentElement.clientHeight) /* or $(window).height() */;
-}
-
-function scrollLoop() {
-    xScrollPosition = window.scrollX;
-    yScrollPosition = window.scrollY;
-    setTranslate(0, yScrollPosition * 0.1, parallax);
-    requestAnimationFrame(scrollLoop);
-    //console.log(xScrollPosition,yScrollPosition,parallaxPos.offsetTop);
-}
-
-
-function setTranslate(xPos, yPos, el) {
-    el.style.transform = `translate3d(${xPos}px, ${yPos}px, 0)`;
-}
-function setBgPosY(yPos, el) {
-    el.style.backgroundPositionY = yPos + "px";
-}
 // Smooth scroll
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -169,10 +72,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    addDataAttributes();
-    //scrollLoop();
-}, false);
 
 const shrinkNav = (width) => {
 
@@ -197,30 +96,39 @@ const showArrow = () => {
     }
 };
 
+/**
+ *
+ * @param {string} dataName Gets compiled into data attribute name
+ * @param {object} elements HTML objects to add to dataName to
+ * @param {string} value Value of the dataName
+ */
+const addDataAttributes = (dataName,elements,value = null) => {
+    elements.forEach((el)=>{
+        let tmp = value;
+        if(value === undefined || value == null){
 
-// SLIDER
+            value = getImageName(el.getAttribute('src'));
+        }
 
-const sliderBtns = document.querySelectorAll('.slider__trigger');
-const sliderImgs = document.querySelectorAll('.slider__img');
-
-
-
-
-function addDataAttributes(){
-    sliderImgs.forEach((img)=>{
-        let name = img.getAttribute('src').split('/')[3].split('.')[0];
-        // adding data-name to img
-
-        img.setAttribute('data-name',name);
+        el.setAttribute(`${dataName}`,value);
+        tmp == null ? value = undefined : value = tmp;
     })
-}
+};
+/**
+ * Extracts image name from a absolute image path
+ * @param {string} str Path to the image
+ * @returns {string} image name
+ */
+const getImageName = (str) => /([ \w-]+)\./.exec(str)[1];
+
+
+
 
 // global - timeout event for slide
 let slideInProgress;
 sliderBtns.forEach((e)=>{
    e.addEventListener('click',(event)=>{
         if(e.classList.contains('active')){
-            console.log('aktivno dugmo');
             return false;
         } else {
             document.querySelector('.slider__trigger.active').classList.remove('active');
@@ -247,10 +155,8 @@ sliderBtns.forEach((e)=>{
 
         if(!img[0].classList.contains('active') && !img[0].classList.contains('sliding')){
             img[0].classList.add('sliding');
-
             // Getting animation duration from CSS //
             let currentAnimationDuration = window.getComputedStyle(img[0], null).getPropertyValue("animation-duration");
-
             // in ms
             currentAnimationDuration = parseFloat(currentAnimationDuration.replace('s','')) * 1000;
 
@@ -275,7 +181,6 @@ function adjustServicesSection(){
     let rowLeft = document.querySelector('.row').getBoundingClientRect().x;
     let servicesLeft = document.querySelector('.services').getBoundingClientRect().x;
     let mq = window.matchMedia( "(max-width: 1200px)" );
-
     sliderPanel.forEach((el)=>{
         if(!mq.matches){
             el.style.paddingLeft = (rowLeft + servicesLeft) + 'px';
@@ -285,10 +190,11 @@ function adjustServicesSection(){
 
 }
 
+window.addEventListener('resize', function () {
+    window.location.reload();
+});
 
-
-
-// make sub titles in a slider
+// make sub-titles in a slider
 
 const slides = document.querySelectorAll('.mix');
 
@@ -300,7 +206,7 @@ function buildDescDiv(div){
     // list of cats
     let categories = div.classList.value.replace('mix','').trim().split(' ');
     // img name
-    let imgName = div.lastElementChild.getAttribute('src').split('/')[1].split('.')[0];
+    let imgName = getImageName(div.lastElementChild.getAttribute('src'));
     let container = document.createElement("div");
     let title = document.createElement('h5');
     container.className = 'mix__title';
@@ -381,5 +287,6 @@ readMoreBlog.forEach(elem=>{
 
 menuBtn.addEventListener('click',(e)=>{
    e.currentTarget.classList.toggle('active');
-   console.log(e.currentTarget.parentNode.children[1].classList.toggle('open'));
+   e.currentTarget.parentNode.children[2].classList.toggle('open');
+   e.currentTarget.parentNode.children[1].classList.toggle('open');
 });

@@ -9,6 +9,22 @@
   position: relative;
   z-index: 1;
 
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
+    &::after {
+      visibility: visible;
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
   @include respond(phone){
     min-width: unset;
     font-size: 1.3rem;
@@ -28,16 +44,8 @@
     //background-color: $color-primary;
   }
 
-  &:hover {
-    cursor: pointer;
-    transform: translateY(-3px);
-    box-shadow: 0 1rem 2rem rgba(0,0,0,.2);
-    &::after {
-      visibility: visible;
-      transform: scaleX(1.4) scaleY(1.6);
-      opacity: 0;
-    }
-  }
+
+
 
 
   &__main {
@@ -61,21 +69,25 @@
 
 
   }
-
-
-
-
   &__red {
   background-color: $color-primary;
 
     &::after {
       background-color: $color-primary;
     }
+
+    &:active {
+      background-color: lighten($color-primary,10%);
+    }
+
+
   }
   &__transparent {
   background-color: transparent;
   border: 1px solid $color-white;
-
+    &:active {
+      background-color: rgba($color-white,.3);
+    }
     &::after {
       visibility: hidden;
       background-color: rgba(255,255,255,.1);
