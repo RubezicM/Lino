@@ -9,13 +9,14 @@ import autoprefixer from 'autoprefixer';
 import sourceMaps from 'gulp-sourcemaps';
 import imagemin from 'gulp-imagemin';
 import named from 'vinyl-named';
+import yaml from 'js-yaml';
+import fs from 'fs';
 import del from 'del';
 import webpack from 'webpack-stream';
 import browserSync from 'browser-sync';
 import zip from 'gulp-zip';
 import replace from 'gulp-replace';
 import info from './package';
-
 
 const server = browserSync.create();
 sass.compiler = require('node-sass');
@@ -24,6 +25,13 @@ sass.compiler = require('node-sass');
 // check if in production or not
 const PRODUCTION = yargs.argv.prod;
 
+// Load settings from settings.yml
+const { COMPATIBILITY, PORT, UNCSS_OPTIONS, INCLUDE } = loadConfig();
+
+function loadConfig() {
+    let ymlFile = fs.readFileSync('config.yml', 'utf8');
+    return yaml.load(ymlFile);
+}
 
 const paths = {
     styles: {
@@ -102,7 +110,9 @@ export const scripts = () => {
 export const styles = () => {
     return gulp.src(paths.styles.src)
         .pipe(gulpif(!PRODUCTION,sourceMaps.init()))
-        .pipe(sass().on('error', sass.logError))
+        .pipe(sass({
+            includePaths: INCLUDE.sass
+        }).on('error', sass.logError))
         .pipe(gulpif(PRODUCTION,cleanCss({compatibility:'ie8'})))
         .pipe(postcss([autoprefixer()]))
         .pipe(gulpif(!PRODUCTION,sourceMaps.write()))
@@ -133,7 +143,7 @@ export const compress = () => {
 
 
 export const watch = () => {
-    gulp.watch('**/*php',reload);
+    gulp.watch('**/*html',reload);
     gulp.watch('src/assets/sass/**/*.scss', styles);
     gulp.watch('src/assets/scripts/**/*.js',gulp.series(scripts,reload));
     gulp.watch(paths.images.src, gulp.series(images,reload));

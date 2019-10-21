@@ -1,5 +1,5 @@
 import mixitup from "mixitup/dist/mixitup";
-import Glide from "@glidejs/glide/dist/glide";
+import Glide from "@glidejs/glide/dist/glide.min.js";
 
 const mixerContainer = document.querySelector('.portfolioMix');
 
@@ -28,7 +28,7 @@ let sr = new ScrollReveal();
 console.log(mq);
 
 let slideUp = {
-    distance: '150%',
+    distance: '120%',
     origin: 'bottom',
     opacity: .1,
     duration: 700,
@@ -36,20 +36,20 @@ let slideUp = {
     delay:200
 };
 let slideLeft = {
-    distance: '150%',
+    distance: '120%',
     origin: 'left',
     duration: 750,
     delay: 100,
     mobile: false
 };
 let slideTop = {
-    distance: '300%',
+    distance: '120%',
     origin: 'top',
     duration: 850,
     delay: 300
 };
 let slideRight = {
-    distance: '150%',
+    distance: '120%',
     origin: 'right',
     duration: 250,
     opacity: 0
